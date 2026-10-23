@@ -13,6 +13,7 @@ read at build time and filled in by the pure functions in [`lib/nda.ts`](lib/nda
 npm install
 npm run dev     # http://localhost:3000
 npm test        # unit tests (Vitest)
+npm run test:e2e  # browser smoke test (Playwright); first run: npx playwright install chromium
 npm run lint
 npm run build
 ```
