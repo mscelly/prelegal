@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  @apply bg-slate-100 text-slate-900;
+}
+
+/* GFM task lists render as checkboxes, so drop the bullets. */
+.nda-document .contains-task-list {
+  @apply list-none pl-0;
+}
+
+.nda-document .task-list-item > span:first-child {
+  @apply mr-2;
+}
+
+/* Leave room to sign in the party table. */
+.nda-document td {
+  @apply h-10 align-bottom;
+}
+
+@media print {
+  body {
+    @apply bg-white;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+}
