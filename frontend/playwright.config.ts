@@ -12,9 +12,10 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
-  // Test the production build. CI builds in an earlier step, so it only starts the server.
+  // Test the static build served by the real backend. CI builds in an earlier step.
   webServer: {
-    command: `${process.env.CI ? "" : "npm run build && "}npm run start -- -p ${port}`,
+    command: `${process.env.CI ? "" : "npm run build && "}cd ../backend && uv run uvicorn app.main:app --port ${port}`,
+    env: { STATIC_DIR: "../frontend/out" },
     url: `http://localhost:${port}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
