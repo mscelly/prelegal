@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("filling in the form updates the preview and names the PDF", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/nda/");
   await expect(page.getByRole("heading", { name: "Mutual NDA Creator" })).toBeVisible();
 
   const form = page.getByRole("region", { name: "NDA details" });
